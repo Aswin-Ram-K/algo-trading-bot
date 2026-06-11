@@ -1,0 +1,57 @@
+# 2026 Algorithmic Trading System — LIVE CONFIGURATION
+system:
+  name: "Hermes Operator"
+  mode: "LIVE"  # SWITCHED FROM PAPER
+  capital: 500.00
+  risk_per_trade: 0.01  # 1% risk per trade ($5)
+  preferred_broker: "ALPACA"  # Primary: Alpaca
+
+markets:
+  stocks: ["SPY", "QQQ", "AAPL", "TSLA"]
+  crypto: ["BTC/USD", "ETH/USD"]
+  commodities: ["GC=F", "CL=F", "SI=F"] # Now via IBKR
+
+data_sources:
+  finnhub_api: "d8kl389r01qjgd71blhgd8kl389r01qjgd71bli0"
+  ccxt_exchange: "binance"
+  yahoo_finance: "enabled"
+
+alpaca_keys:
+  live:
+    api_key: "PKEOVQDW7OG2A6THI6TDVVX7LM"
+    secret_key: "HxdrBMszWGSPks7jc4YtDQpWqDNAfarYmemhaiGsXNUW"
+
+# IBKR Configuration (Required for Commodities/Forex)
+ibkr_keys:
+  client_id: "YOUR_IBKR_CLIENT_ID"
+  port: 7497  # 7497 Live, 7496 Paper
+  trader_workstation_path: ""
+
+# The 10 Metrics (Accelerated)
+metrics:
+  win_rate:
+    threshold: 0.55
+  profit_factor:
+    threshold: 1.5
+  max_drawdown:
+    threshold: 0.10 # Tighter for small capital
+  sharpe_ratio:
+    threshold: 1.0
+  sortino_ratio:
+    threshold: 1.5
+  recovery_time_days:
+    threshold: 15 # Faster recovery needed
+  avg_win_vs_loss:
+    threshold: 1.5
+  trade_frequency:
+    target: "swing" # Not day trading (PDT Rule)
+  regime_fit:
+    threshold: 2.0
+  live_decay_score:
+    threshold: 0.1
+
+strategies:
+  - "Equity Momentum (Swing)"
+  - "Crypto Mean Reversion"
+  - "Commodity Carry"
+  - "Volatility Regime Shift"

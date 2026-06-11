@@ -1,0 +1,16 @@
+# Requirements for algo-trading-bot with HMM regime detection
+# Core data & API
+pandas
+numpy
+ccxt
+yfinance
+finnhub-python
+alpaca-py
+requests
+pyyaml
+ib_insync
+
+# HMM regime detection (see core/regime.py)
+hmmlearn
+scikit-learn
+statsmodels
